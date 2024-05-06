@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>20240506-2</title>
+    <meta charset="utf-8">
+    <style>
+        h1{
+            text-align: center;
+            font-size: 70px;
+        }
+        h2{
+            margin-left: 65%;
+            font-size: 30px;
+            text-decoration: underline;
+        }
+    a{
+        color: green;
+        text-decoration: none;
+    }
+    pre{
+        font-size: 120%;
+    }
+    </style>
+</head>
+
+<h1><a href="index.html">MAIN</a></h1>
+<h2>2024 05 06 - 2</h2>
+
+<body>
+    <pre>
+        #include <stdio.h>
+
+            int main() {
+                // int형 변수 a에 최대값 2147483647 할당
+                int a = 2147483647;
+                printf("a : %d \n", a);
+            
+                // a를 1 증가시키면 오버플로우 발생
+                // int형의 표현 범위를 넘어가서 -2147483648이 출력됨
+                a++;
+                printf("a : %d \n", a);
+            
+                // unsigned int형 변수 b에 -1 할당
+                // 부호 없는 정수(unsigned int)는 음수 표현 불가
+                // -1을 unsigned int로 해석하면 최대값 4294967295가 됨
+                unsigned int b = -1;
+                printf("b 에 들어있는 값을 unsigned int 로 해석했을 때 값 : %u \n", b);
+            
+                // unsigned int형 변수 b에 최대값 4294967295 할당
+                b = 4294967295;
+                printf("b : %u \n", b);
+            
+                // b를 1 증가시키면 오버플로우 발생
+                // 최대값을 넘어서 0이 됨
+                b++;
+                printf("b : %u \n", b);
+            
+                return 0;
+            }
+            
+            /*정수 표현의 기본
+            
+            컴퓨터는 모든 데이터를 0과 1로 구성된 이진수로 표현
+            정수도 이진수로 표현됨
+            양수의 이진수 표현
+            
+            양수는 그대로 이진수로 표현 가능
+            예)/ 7 = 0111
+            음수의 이진수 표현 - 2의 보수
+            
+            음수는 2의 보수 표현 방식 사용
+            2의 보수를 구하는 방법:
+            양수의 이진수 표현 구하기 (예: 7 = 0111)
+            1의 보수 구하기 (각 비트 반전 -> 1000)
+            1의 보수에 1 더하기 (1001)
+            따라서 -7은 이진수 1001로 표현됨
+            부호 있는 정수(signed int)
+            
+            부호 비트(맨 앞 비트)가 0이면 양수, 1이면 음수
+            양수는 그대로, 음수는 2의 보수 표현 사용
+            부호 없는 정수(unsigned int)
+            
+            양수만 표현 가능
+            모든 비트 사용, 부호 비트 없음
+            최대값은 모든 비트가 1인 경우
+            오버플로우 주의
+            
+            int의 표현 범위를 벗어나는 값이 발생하면 오버플로우 발생
+            오버플로우 시 양수에서 음수로 바뀌는 기적 발생
+            항상 오버플로우에 주의해야 함*/
+            //https://modoocode.com/308
+    </pre>
+    </body>
+        </html>
