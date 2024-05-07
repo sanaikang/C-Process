@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>20240507</title>
+    <meta charset="utf-8">
+    <style>
+        h1{
+            text-align: center;
+            font-size: 70px;
+            border-bottom: 1px gray solid;
+        }
+        h2{
+            margin-left: 65%;
+            font-size: 30px;
+            text-decoration: underline;
+        }
+    a{
+        color: green;
+        text-decoration: none;
+    }
+    pre{
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+    }
+    body{
+        margin: 0;
+    }
+    </style>
+</head>
+
+<h1><a href="index.html">MAIN</a></h1>
+<h2>2024 05 07</h2>
+
+<body>
+<pre>/* 문자형 변수 사용 예제 */
+    #include &lt;stdio.h &gt;
+    #pragma warning(disable:4996)
+    
+    int main() {
+        char a;  // 문자형 변수 a 선언
+        a = 'a';  // 변수 a에 문자 'a' 저장
+    
+        // 문자형 변수 a에 저장된 값을 두 가지 방식으로 출력
+        // %d는 정수형으로 출력하므로, a 변수의 ASCII 코드값(97)이 출력됨
+        // %c는 문자형으로 출력하므로, 실제 문자 'a'가 출력됨
+        printf("a 의 값과 들어 있는 문자는? 값 : %d , 문자 : %c \n", a, a);
+    
+        /* 섭씨온도를 화씨로 변환하는 예제 */
+        double celsius;  // 섭씨 온도를 저장할 실수형 변수 선언
+    
+        // 사용자에게 섭씨 온도 입력을 안내하는 메시지 출력
+        printf("섭씨 온도를 화씨 온도로 바꿔주는 프로그램 입니다. \n");
+        printf("섭씨 온도를 입력해 주세요 : ");
+        // 사용자로부터 섭씨 온도 입력받기
+        scanf("%lf", &celsius);
+    
+        // 섭씨 온도를 화씨 온도로 변환하는 공식 적용하여 결과 출력
+        printf("섭씨 %f 도는 화씨로 %f 도 입니다 \n", celsius, 9 * celsius / 5 + 32);
+    
+        /* scanf 함수를 이용한 다양한 자료형 입출력 예제 */
+        char ch;  // 문자형 변수 선언
+        short sh;  // 정수형(short) 변수 선언
+        int i;  // 정수형(int) 변수 선언
+        long lo;  // 정수형(long) 변수 선언
+        float fl;  // 실수형(float) 변수 선언
+        double du;  // 실수형(double) 변수 선언
+    
+        // 각 자료형 변수에 대한 입력 안내 메시지 출력
+        printf("char 형 변수 입력 : ");
+        scanf("%c", &ch);  // 문자형 변수 입력받기
+    
+        printf("short 형 변수 입력 : ");
+        scanf("%hd", &sh);  // 정수형(short) 변수 입력받기
+        printf("int 형 변수 입력 : ");
+        scanf("%d", &i);  // 정수형(int) 변수 입력받기
+        printf("long 형 변수 입력 : ");
+        scanf("%ld", &lo);  // 정수형(long) 변수 입력받기
+    
+        printf("float 형 변수 입력 : ");
+        scanf("%f", &fl);  // 실수형(float) 변수 입력받기
+        printf("double 형 변수 입력 : ");
+        scanf("%lf", &du);  // 실수형(double) 변수 입력받기
+    
+        // 입력받은 다양한 자료형 변수 값 출력
+        printf("char : %c , short : %d , int : %d ", ch, sh, i);
+        printf("long : %ld , float : %f, double : %f \n", lo, fl, du);
+    
+        return 0;
+    }
+    /*char 은 1 바이트 정수를 저장하는 타입으로, 주로 문자를 저장하는데 사용됩니다.
+    
+    각 문자들은 아스키 테이블이란 표를 통해 특정 정수와 대응되어 있습니다. 예를 들어서 65 는 알파벳 A 와 대응됩니다.
+    
+    scanf 를 통해 사용자로 부터 데이터를 받을 수 있습니다.
+    
+    %c 는 문자, %d 는 정수, %f 는 float, %lf 는 double 을 받습니다.*/</pre>
+    </body>
+        </html>
