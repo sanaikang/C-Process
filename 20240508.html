@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>20240508</title>
+    <meta charset="utf-8">
+    <style>
+        h1{
+            text-align: center;
+            font-size: 70px;
+            border-bottom: 1px gray solid;
+        }
+        h3{
+            /*margin-left: 65%;
+            font-size: 30px;*/
+            text-decoration: underline;
+        }
+    a{
+        color: green;
+        text-decoration: none;
+    }
+    pre{
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+    }
+    body{
+        margin: 0;
+    }
+    #grid{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+    #grid h3{
+        padding-left: 20px;
+        margin-top: 0px;
+    }
+    #article{
+        margin: 10px;
+        margin-top: 35px;
+    }
+    </style>
+</head>
+
+<h1><a href="index.html">MAIN</a></h1>
+<body>
+<div id="grid">
+<h3>24 05 08<br>C-6</h3>
+    <div>
+<pre id="article">/* if 문 이란?
+    - if 문은 주어진 조건이 참인 경우에 특정 코드 블록을 실행하는 제어문입니다.
+    - 조건식이 참(true)이면 블록 내의 코드가 실행되고, 거짓(false)이면 실행되지 않습니다.
+ */
+ #include <stdio.h>
+ #pragma warning(disable:4996)
+ 
+ int main() {
+     int i;
+ 
+     // 사용자로부터 정수 입력 받기
+     printf("입력하고 싶은 숫자를 입력하세요! : ");
+     scanf("%d", &i);
+ 
+     // 입력된 숫자가 7인 경우 행운의 숫자 메시지 출력
+     if (i == 7) {
+         printf("당신은 행운의 숫자 7을 입력했습니다");
+     }
+ 
+     /* 나누기 */
+     double j, k;
+ 
+     // 사용자로부터 두 개의 실수 입력 받기
+     printf("나누고 싶은 두 정수를 입력하세요 : ");
+     scanf("%lf %lf", &j, &k);
+ 
+     // 두 번째 입력된 숫자가 0인 경우 나눌 수 없다는 메시지 출력 후 프로그램 종료
+     if (k == 0) {
+         printf("0으로 나눌 수 없습니다.\n");
+         return 0;
+     }
+ 
+     // 입력된 두 수를 나눈 결과 출력
+     printf("%f를 %f로 나눈 결과는 : %f\n", j, k, j / k);
+ 
+     /* 합격? 불합격? */
+     int score;
+ 
+     // 사용자로부터 수학 점수 입력 받기
+     printf("당신의 수학점수를 입력하세요! : ");
+     scanf("%d", &score);
+ 
+     // 수학 점수에 따라 합격 또는 불합격 메시지 출력
+     if (score >= 90) {
+         printf("당신은 합격입니다!\n");
+     }
+ 
+     if (score < 90) {
+         printf("당신은 불합격입니다!\n");
+     }
+ 
+     /* 크기 비교하기 */
+     int x, y;
+ 
+     // 사용자로부터 두 개의 정수 입력 받기
+     printf("크기를 비교할 두 수를 입력해 주세요 : ");
+     scanf("%d %d", &x, &y);
+ 
+     // 두 수의 크기를 비교하여 관련 메시지 출력
+     if (x > y) {
+         printf("%d는 %d보다 큽니다\n", x, y);
+     }
+ 
+     if (x < y) {
+         printf("%d는 %d보다 작습니다\n", x, y);
+     }
+ 
+     if (x >= y) {
+         printf("%d는 %d보다 크거나 같습니다\n", x, y);
+     }
+ 
+     if (x <= y) {
+         printf("%d는 %d보다 작거나 같습니다\n", x, y);
+     }
+ 
+     if (x == y) {
+         printf("%d는 %d와(과) 같습니다\n", x, y);
+     }
+ 
+     if (x != y) {
+         printf("%d는 %d와(과) 다릅니다\n", x, y);
+     }
+ 
+     /* 새로쓰는 죽음의 숫자 예제 */
+     int num;
+ 
+     // 사용자로부터 숫자 입력 받기
+     printf("아무 숫자나 입력해 보세요 : ");
+     scanf("%d", &num);
+ 
+     // 입력된 숫자에 따라 관련 메시지 출력
+     if (num == 7) {
+         printf("행운의 숫자 7 이군요!\n");
+     }
+     else if (num == 4) {
+         printf("죽음의 숫자 4 인가요 ;;;\n");
+     }
+     else {
+         printf("그냥 평범한 숫자 %d\n", num);
+     }
+ 
+     /* 평균 점수 계산하기 */
+     float ave_score;
+     float math, english, science, programming;
+ 
+     // 사용자로부터 네 개의 실수 입력 받기
+     printf("수학, 영어, 과학, 컴퓨터 프로그래밍 점수를 각각 입력해 주세요 : ");
+     scanf("%f %f %f %f", &math, &english, &science, &programming);
+ 
+     // 평균 점수 계산 후 결과 출력
+     ave_score = (math + english + science + programming) / 4;
+     printf("당신의 평균 점수는 %f입니다\n", ave_score);
+ 
+     // 평균 점수에 따라 다른 메시지 출력
+     if (ave_score >= 90) {
+         printf("당신은 우등생입니다.\n");
+     }
+     else if (ave_score >= 40) {
+         printf("조금만 노력하세요!\n");
+     }
+     else {
+         printf("공부를 발로 합니까?\n");
+     }
+ 
+     /* 크기 비교 */
+     int a;
+ 
+     // 사용자로부터 정수 입력 받기
+     printf("아무 숫자나 입력하세요 : ");
+     scanf("%d", &a);
+ 
+     // 입력된 숫자가 10 이상 20 미만인 경우 메시지 출력
+     if (a >= 10 && a < 20) {
+         printf("%d는 10 이상, 20 미만인 수입니다.\n", a);
+     }
+ 
+     /* 논리 연산자 */
+     // 논리 연산자를 사용하여 범위를 한 번에 체크하고 메시지 출력
+     if (a >= 10 && a < 20) {
+         printf("%d는 10 이상, 20 미만인 수입니다.\n", a);
+     }
+ 
+     /* 논리 합 */
+     int height, weight;
+ 
+     // 사용자로부터 키와 몸무게 입력 받기
+     printf("당신의 키와 몸무게를 각각 입력해 주세요 : ");
+     scanf("%d %d", &height, &weight);
+ 
+     // 키가 190 이상이거나 몸무게가 100 이상인 경우 '거구' 메시지 출력
+     if (height >= 190 || weight >= 100) {
+         printf("당신은 '거구'입니다.\n");
+     }
+ 
+     /* 논리 부정 */
+     // 논리 부정 연산자를 사용하여 '거구'가 아닌 경우 메시지 출력
+     if (!(height >= 190 || weight >= 100)) {
+         printf("당신은 거구가 아닙니다.\n");
+     }
+ 
+     return 0;
+ }
+ 
+ 
+ /*뭘 배웠지 ?
+ if, else if, else 가 무엇 인지 알고 있습니다.
+ 논리 연산자&&, || 를 배웠습니다. 
+ !의 역할을 알고 있습니다. 
+ 0 <= a <= 1 을 잘못된 사용 예 입니다.
+ 이 대신 0 <= a && a <= 1 과 같이 사용해야 합니다.*/
+ 
+ /*뭘 배웠지 ?
+ if, else if, else 가 무엇 인지 알고 있습니다.
+ 논리 연산자&&, || 를 배웠습니다. 
+ !의 역할을 알고 있습니다. 
+ 0 <= a <= 1 을 잘못된 사용 예 입니다.
+ 이 대신 0 <= a && a <= 1 과 같이 사용해야 합니다.*/</pre>
+    </div>
+</div>
+
+</body>
+    </body>
+        </html>
