@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240510</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <body>
+    <div id="grid">
+      <h3>24 05 10<br />C-7</h3>
+      <div>
+        <pre id="article">
+<strong>문제 1, 2</strong> 1. N 줄인 삼각형을 출력한다. 단, 사용자로 부터 임의의 N 을 입력 받는다. 문제 2.역 삼각형을 출력
+ #include &lt;stdio.h &gt;
+
+  int main() {
+      int N;
+  
+      printf("삼각형의 높이(N)를 입력하세요: ");
+      scanf_s("%d", &N);
+      /*// N 줄인 삼각형을 출력한다. 사용자로 부터 임의의 N 을 입력 받는다.
+      (int i = 1; i <= N; ++i)*/
+  
+      // N 줄인 역삼각형을 출력한다. 사용자로 부터 임의의 N 을 입력 받는다.
+      for (int i = N; i >= 1; --i) {
+          // 공백 출력
+          for (int j = 1; j <= N - i; ++j) {
+              printf(" ");
+          }
+  
+          // 별표 출력
+          for (int k = 1; k <= 2 * i - 1; ++k) {
+              printf("*");
+          }
+  
+          // 줄바꿈
+          printf("\n");
+      }
+  
+      return 0;
+  }
+
+  <strong>문제 3</strong>
+  //1000 이하의 3 또는 5 의 배수인 자연수들의 합을 구한다.
+int main() {
+    int n = 1000;
+    int sum = 0;
+
+    for (int i = 1; i <= n;++i) {
+        if (i % 3 == 0 || i % 5 == 0) { //or 연산자
+            sum += i; //SUM변수 업뎃
+        }
+    }
+    printf("% d", sum);
+    return 0;
+}
+<strong>문제 4</strong>  1000000 이하의 피보나치 수열의 짝수 항들의 합을 구한다
+int main() {
+  int max_limit = 1000000;
+  int a = 1, b = 1;  // 초기 두 항은 1로 시작
+  long long sum_even = 0;
+
+  // 첫 번째 두 항은 이미 초기화되어 있으므로 반복을 통해 피보나치 수열을 생성하면서 짝수 항의 합을 계산
+  while (a <= max_limit) {
+      // 현재 항이 짝수인지 확인하여 짝수이면 합에 추가
+      if (a % 2 == 0) {
+          sum_even += a;
+      }
+
+      // 다음 피보나치 수열 항을 계산하기 위해 순서를 갱신
+      int next_term = a + b; //
+      a = b; //
+      b = next_term; //
+  }
+
+  // 결과 출력
+  printf("1,000,000 이하의 피보나치 수열 짝수 항들의 합: %lld\n", sum_even);
+
+  return 0;
+}
+<strong>문제 5</strong>   사용자로 부터 N 값을 입력 받고 1 부터 N 까지의 곱을 출력
+int main() {
+  int N;
+  long long F = 1;
+
+  // 사용자로부터 정수 N 입력 받기
+  printf("정수 N을 입력하세요: ");
+  scanf_s("%d", &N);
+
+  // 입력된 N 값이 음수인 경우 오류 메시지 출력
+  if (N < 0) {
+      printf("음수는 입력할 수 없습니다.\n");
+      return 1; // 프로그램 종료
+  }
+
+  // 1부터 N까지의 곱(factorial) 계산
+  for (int i = 1; i <= N; i++) {
+      F *= i;
+  }
+
+  // 결과 출력
+  printf("1부터 %d까지의 곱은 %lld입니다.\n", N, F);
+
+  return 0;
+}
+<strong>문제 6</strong>   다음 식을 만족하는 자연수 a,b,c 의 개수를 구하여라
+
+i) a + b + c = 2000
+ii) a ＞ b > c, a,b,c 는 모두 자연수
+int main() {
+  int cnt = 0;
+
+  for (int a = 1; a < 2000; a++) {
+      for (int b = 1; b < a; b++) {  // b는 1부터 a-1까지
+          for (int c = 1; c < b; c++) {  // c는 1부터 b-1까지
+              int sum = a + b + c;
+              if (sum == 2000 && a > b && b > c) {
+                  cnt++;
+                  //printf("%d, %d, %d\n", a, b, c); // 조합 출력
+              }
+          }
+      }
+  }
+
+  printf("만족하는 자연수 a, b, c의 조합 개수 = %d\n", cnt);
+
+  return 0;
+}
+<strong>문제 7</strong>   임의의 자연수 N 을 입력 받아 N 을 소인수 분해 한 결과를 출력
+int main() {
+  int N;
+
+  // 사용자로부터 자연수 N 입력 받기
+  printf("자연수 N을 입력하세요: ");
+  scanf_s("%d", &N);
+
+  printf("%d = ", N);
+
+  // 소인수 분해를 위한 변수들
+  int divisor = 2;  // 시작은 가장 작은 소수 2부터
+
+  // N을 소인수로 계속 나누어가면서 출력
+  while (N > 1) {
+      if (N % divisor == 0) {
+          printf("%d", divisor);
+          N /= divisor;
+          if (N > 1) {
+              printf(" * ");
+          }
+      }
+      else {
+          divisor++;
+      }
+  }
+
+  printf("\n");
+
+  return 0;
+}
+</pre>
+      </div>
+    </div>
+  </body>
+</html>
