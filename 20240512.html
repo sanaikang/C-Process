@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240512</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <body>
+    <div id="grid">
+      <h3>24 05 12<br />C-9</h3>
+      <div>
+        <pre id="article">
+          /* 마이펫 if*/
+          /* 업그레이드 버전 */
+          #include <stdio.h>
+          int main() {
+              int input;
+          
+              printf("마이펫 업그레이드\n");
+              printf("무엇을 하실 것인지 입력하세요 \n");
+              printf("1. 밥주기 \n");
+              printf("2. 씻기기 \n");
+              printf("3. 재우기 \n");
+          
+              scanf_s("%d", &input);
+          
+              switch (input) {
+              case 1:
+                  printf("아이 맛있어 \n");
+                  break;
+          
+              case 2:
+                  printf("아이 시원해 \n");
+                  break;
+          
+              case 3:
+                  printf("zzz \n");
+                  break;
+          
+              default:
+                  printf("무슨 명령인지 못 알아 듣겠어. 왈왈 \n");
+                  break;
+              }
+          
+              return 0;
+          }
+          //문제 1 switch 문의 '값' 부분에 왜 정수만 와야 되는지 아십니까?
+          
+          /*switch 문의 '값' 부분에 정수만 사용할 수 있는 이유는 switch 문의 동작 방식과 관련이 있습니다.
+          switch 문은 조건에 따라 특정 코드 블록을 실행하는 제어 구조입니다. 
+          switch 문은 주어진 값과 일치하는 case 레이블을 찾아 해당하는 코드 블록을 실행합니다.
+          이때 switch 문이 정수만을 사용할 수 있는 이유는 다음과 같습니다
+          
+          Jump Table 사용 : 대부분의 컴파일러는 switch 문을 구현할 때 jump table(또는 branch table)이라는 최적화 기법을 사용합니다.
+          jump table은 일련의 주소를 가지고 있고, switch 문의 값에 따라 이 주소로 바로 이동하여 해당하는 case 문을 실행합니다.
+          이를 위해서는 case 레이블의 값들이 정수여야 하며, 이 값들은 jump table의 인덱스로 사용됩니다.
+          
+          타입 일치성 : switch 문은 값을 비교할 때 엄격한 타입 일치성을 요구합니다.
+          정수 값을 사용하면 이 비교가 간단하고 효율적으로 처리됩니다.
+          반면 문자열이나 다른 비정수형 값들은 비교가 복잡해지고 성능 저하를 초래할 수 있습니다.
+          
+          비교 효율성 : 정수 값은 크기 비교나 등호 비교가 간단합니다.예를 들어, switch (x)에서 x가 정수면 각 case 레이블의 값과 바로 비교할 수 있습니다.
+          이에 비해 문자열이나 다른 자료형은 복잡한 비교 로직을 거쳐야 하므로 switch 문의 목적에 적합하지 않습니다.
+          
+          따라서 switch 문에서 '값' 부분에는 정수 값이 사용되어야 하며, 이는 switch 문이 빠르고 효율적으로 동작할 수 있도록 하는데 중요한 이유입니다.
+          
+          정수를 사용하는 이유는 소수는 근사값으로 연산됨
+          */
+          
+          //문제 2 앞서, switch 문이 내부적으로 처리 되는 부분에서 case 1: ~ case 10: 일 때 만 생각하였는데,
+          // 만약 case 1:, case 3:, case 4:, case 10: 과 같이 불규칙 적으로 switch 문이 적용된다면 컴퓨터는 jump table 를 어떻게 작성할까요
+          
+          /*일반적으로 switch 문의 jump table은 연속적인 정수 값에 기반하여 작성됩니다.
+          이 경우 각 case 문의 레이블은 정수 값으로 해석되어 해당 값에 따라 jump table의 인덱스로 사용됩니다.
+          이 인덱스는 해당 case 레이블의 코드 블록으로 직접 점프하기 위해 사용됩니다.
+          
+          그러나 불규칙적인 case 문을 가진 switch 문의 경우, 컴파일러는 이를 처리하기 위해 다른 방식을 사용해야 합니다.
+          불규칙한 case 문의 값들은 일반적으로 일련의 조건문으로 변환됩니다.
+          이 조건문은 주어진 switch 문의 값에 따라 각 case 문의 조건을 평가하고 해당하는 코드 블록을 실행합니다.
+          
+          비교 연산 : 컴파일러는 x의 값에 따라 각 case 문의 조건을 순차적으로 평가합니다.
+          예를 들어, x가 1인 경우 첫 번째 case 문이 실행됩니다.x가 3인 경우 세 번째 case 문이 실행됩니다.
+          
+          조건 분기 : 컴파일러는 일련의 조건 분기를 생성하여 switch 문의 각 case 문을 처리합니다.
+          이는 일반적으로 if - else 문으로 구현될 수 있습니다.예를 들어, 컴파일러는 if (x == 1)을 사용하여 첫 번째 case 문을 처리할 수 있습니다.
+          
+          테이블 점프 : 불규칙한 값들에 대해서는 jump table 대신 조건 분기가 사용됩니다.
+          컴파일러는 최적화된 조건 분기 로직을 생성하여 switch 문을 처리합니다.
+          
+          따라서 불규칙한 case 문을 가진 switch 문의 경우, 컴파일러는 이를 조건 분기로 변환하여 처리합니다.
+          이는 switch 문의 유연성을 유지하면서도 효율적인 코드 실행을 보장합니다.
+          
+          컴파일러 최적화에 따라 다르지만 적절히 if-else 와 index 기반 jmp 를 섞을 것입니다. */
+          
+</pre
+        >
+      </div>
+    </div>
+  </body>
+</html>
