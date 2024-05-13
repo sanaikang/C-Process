@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240512</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <body>
+    <div id="grid">
+      <h3>24 05 12<br />C-9</h3>
+      <div>
+        <pre id="article">
+#include &lt;stdio.h &gt;
+
+          int main() {
+              float f;//12.3456
+              int i;
+          
+              printf("실수를 입력하시오: ");
+              if (scanf_s("%f", &f) != 1) {// 12.3456
+                  printf("잘못된 입력입니다.\n");
+              }
+              else {
+                  // 입력된 값이 정수인지 확인
+                  if ((int)f == f) {
+                      // 입력된 값이 정수일 경우
+                      i = (int)f; // 실수를 정수로 변환하여 i에 저장
+                  }
+                  else {
+                      // 입력된 값이 실수일 경우
+                      i = (int)(f * 100) % 100; // 실수의 소수점 이하 두 자리를 추출하여 i에 저장
+                  }// 실수를 100을 곱하여 소수점 이하 두 자리를 정수로 만든 후, 100으로 나누어 추출 
+                  //1. 12.3456*100=1234.56 2. (int)정수로 변환 1234 3. 1234를 100으로 나눈 나머지를구함 23 = i
+          
+                  printf("i = %d\n", i);//23
+              }
+          
+              return 0;
+          }</pre
+        >
+      </div>
+    </div>
+  </body>
+</html>
