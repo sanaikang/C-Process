@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240514-2</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+      input {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <input
+    type="button"
+    value="DAY"
+    onclick="document.querySelector('body').style.backgroundColor='white';
+  document.querySelector('body').style.color='black';"
+  />
+  <input
+    type="button"
+    value="NIGHT"
+    onclick="document.querySelector('body').style.backgroundColor='black';
+  document.querySelector('body').style.color='white';"
+  />
+  <body>
+    <div id="grid">
+      <h3>24 05 14-2<br />C-11</h3>
+      <div>
+        <pre id="article">
+/* 2 차원 배열 */
+#include &lt;stdio.h &gt;
+int main() {
+	int arr[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	printf("arr 배열의 2 행 3 열의 수를 출력 : %d \n", arr[1][2]);
+	printf("arr 배열의 1 행 2 열의 수를 출력 : %d \n", arr[0][1]);
+	return 0;
+}
+<img src="https://modoocode.com/img/2075D8024AE8EB2657AF92.webp" width="600px"/>
+<img src="https://modoocode.com/img/1940B00D4AD1EFB1226E92.webp" width="600px"/>
+  /* 학생 점수 입력 받기 */
+#include &lt;stdio.h &gt;
+int main() {
+  int score[3][2];
+  int i, j;
+
+  for (i = 0; i < 3; i++)  // 총 3 명의 학생의 데이터를 받는다
+  {
+    for (j = 0; j < 2; j++) {
+      if (j == 0) {
+        printf("%d 번째 학생의 국어 점수 : ", i + 1);
+        scanf("%d", &score[i][j]);
+      } else if (j == 1) {
+        printf("%d 번째 학생의 수학 점수 : ", i + 1);
+        scanf("%d", &score[i][j]);
+      }
+    }
+  }
+
+  for (i = 0; i < 3; i++) {
+    printf("%d 번째 학생의 국어 점수 : %d, 수학 점수 : %d \n", i + 1, score[i][0], score[i][1]);
+  }
+
+  return 0;
+}
+<img src="https://modoocode.com/img/15758C294AD1F69944F937.webp" width="600px"/></pre></pre>
+      </div>
+    </div>
+  </body>
+</html>
