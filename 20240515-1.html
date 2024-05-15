@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240515-1</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+      input {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <input
+    type="button"
+    value="DAY"
+    onclick="document.querySelector('body').style.backgroundColor='white';
+  document.querySelector('body').style.color='black';"
+  />
+  <input
+    type="button"
+    value="NIGHT"
+    onclick="document.querySelector('body').style.backgroundColor='black';
+  document.querySelector('body').style.color='white';"
+  />
+  <body>
+    <div id="grid">
+      <h3>24 05 15-1<br />C-12-1</h3>
+      <div>
+        <pre id="article">
+/* 포인터도 변수이다 */
+#include &lt;stdio.h &gt;
+int main() {
+	int a;
+	int b;
+	int* p;
+
+	p = &a;
+	*p = 2;
+	p = &b;
+	*p = 4;
+
+	printf("a : %d \n", a);
+	printf("b : %d \n", b);
+	return 0;
+}
+/*int a;, int b;: 정수형 변수 a와 b를 선언합니다.
+int* p;: p라는 포인터 변수를 선언합니다. 이 포인터는 정수형 변수의 주소를 저장할 수 있습니다.
+p = &a;: 포인터 p에 변수 a의 주소를 할당합니다. &a는 변수 a의 주소를 나타냅니다.
+*p = 2;: 포인터 p가 가리키는 주소에 2를 저장합니다. 여기서 *p는 p가 가리키는 주소의 값을 나타냅니다. 따라서 a의 값이 2로 변경됩니다.
+p = &b;: 이제 포인터 p에는 변수 b의 주소를 할당합니다.
+*p = 4;: 포인터 p가 가리키는 주소에 4를 저장합니다. 따라서 b의 값이 4로 변경됩니다.*/
+      </div>
+    </div>
+  </body>
+</html>
