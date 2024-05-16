@@ -60,16 +60,18 @@
     <a href="index.html" style="color: pink; text-decoration: none">MAIN</a>
   </h1>
   <input
+    id="Night_Day"
     type="button"
-    value="DAY"
-    onclick="document.querySelector('body').style.backgroundColor='white';
-    document.querySelector('body').style.color='black';"
-  />
-  <input
-    type="button"
-    value="NIGHT"
-    onclick="document.querySelector('body').style.backgroundColor='black';
-    document.querySelector('body').style.color='white';"
+    value="Night"
+    onclick="
+    if(document.querySelector('#Night_Day').value==='Night'){
+    document.querySelector('body').style.backgroundColor='black';
+    document.querySelector('body').style.color='white';
+    document.querySelector('#Night_Day').value='Day';} 
+    else{
+    document.querySelector('body').style.backgroundColor='white';
+    document.querySelector('body').style.color='black';
+    document.querySelector('#Night_Day').value='Night'; }"
   />
   <body>
     <!--공부할때 마다 추가하기-->

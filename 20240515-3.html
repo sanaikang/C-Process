@@ -63,24 +63,147 @@
 
   <h1><a href="index.html">MAIN</a></h1>
   <input
+    id="Night_Day"
     type="button"
-    value="DAY"
-    onclick="document.querySelector('body').style.backgroundColor='white';
-  document.querySelector('body').style.color='black';"
-  />
-  <input
-    type="button"
-    value="NIGHT"
-    onclick="document.querySelector('body').style.backgroundColor='black';
-  document.querySelector('body').style.color='white';"
+    value="Night"
+    onclick="
+    if(document.querySelector('#Night_Day').value==='Night'){
+    document.querySelector('body').style.backgroundColor='black';
+    document.querySelector('body').style.color='white';
+    document.querySelector('#Night_Day').value='Day';} 
+    else{
+    document.querySelector('body').style.backgroundColor='white';
+    document.querySelector('body').style.color='black';
+    document.querySelector('#Night_Day').value='Night'; }"
   />
   <body>
     <div id="grid">
       <h3>24 05 15-3<br />C-12-3</h3>
       <div>
         <pre id="article">
+          복습
 #include &lt;stdio.h &gt;
-내일 하자 ㅅㅂ ㅈㄴ어렵네
+
+  /*int add(int num1, int num2) {
+    return num2 - num1;
+  }
+  swap(int *num1, int *num2) {
+  
+    int temp;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+  
+    return 0;
+  }
+  &lt;stdio.h &gt;
+  int main() {
+    //'*'
+    //포인터 선언할때
+    //포인터는 주소를 가르킴
+    //해당 주소에 값이 접근하는 용도
+    // &
+    //&a a의 주소를 의미
+  
+    //a와b의 값의 위치를 서로 스왑하고 싶다
+    int a = 12;
+    int b = 24;
+  
+    swap(&a, &b);
+    printf("%d\n%d\n",a, b);
+  
+    int* ptr;
+    int* ptr2;
+  
+    ptr = &a;
+    ptr2 = &b;
+  
+  
+    return 0;
+  }*/
+  &lt;stdio.h &gt;
+  int main() {
+    char arr[6] = { "hello" };
+  
+    char* ptr;
+  
+    ptr = &arr[0];
+  
+    //arr <-- 주소를 가지고 있음.
+    //arr[0] <-- 값을 가지고 있음
+  
+    //연산자의 순서
+    printf("%c", *(ptr+4)); //*ptr(&arr[0])/ptr[1] 인트는 4씩+
+  
+    return 0;
+  }
+
+  #include &lt;stdio.h &gt;
+    int main() {
+      int arr[10] = {100, 98, 97, 95, 89, 76, 92, 96, 100, 99};
+    
+      int* parr = arr;
+      int sum = 0;
+    
+      while (parr - arr <= 9) {
+        sum += (*parr);
+        parr++;//1 * (포인터가 가리키는 타입의 크기 int=4바이트) 가 더해진다는 짐.
+      }//그래서 parr이 첫번째 배열(100)에서 4바이트만큼 더해지면 두번째 배열(98)가리킴.
+    
+      printf("내 시험 점수 평균 : %d \n", sum / 10);
+      return 0;
+    }
+    
+    /* 포인터의 포인터 */
+#include &lt;stdio.h &gt;
+int main() {
+	int a;
+	int* pa;
+	int** ppa;
+
+	pa = &a;
+	ppa = &pa;
+
+	a = 3;
+
+	printf("a : %d // *pa : %d // **ppa : %d \n", a, *pa, **ppa);
+	printf("&a : %p // pa : %p // *ppa : %p \n", &a, pa, *ppa);
+	printf("&pa : %p // ppa : %p \n", &pa, ppa);
+
+	return 0;
+}
+#include &lt;stdio.h&gt;
+
+  int main() {
+    int arr[3] = { 1, 2, 3 };
+    int(*parr)[3] = &arr;
+  // int (*parr)[3] = &arr;이거는 int(*parr)[3]은 인트적 배열 주소값 3개를 만든거고
+  //&arr의 주소값을 쓴다 이거네 ?
+  //(*parr)은 arr 배열 자체를 의미하며,
+  //(*parr)[i]는 arr 배열의 i번째 요소를 의미
+    printf("arr[1] : %d \n", arr[1]);
+    printf("parr[1] : %d \n", (*parr)[1]);
+  //(*parr)[1] 과 arr[1] 은 같은 문장
+  }
+  #include &lt;stdio.h&gt;
+    int main() {
+      int arr[2][3];
+    
+      printf("arr[0] : %p \n", arr[0]);
+      printf("&arr[0][0] : %p \n", &arr[0][0]);
+    
+      printf("arr[1] : %p \n", arr[1]);
+      printf("&arr[1][0] : %p \n", &arr[1][0]);
+    
+      return 0;
+    }
+    //arr[0] 의 값이 arr[0][0] 의 주소값과 같고,
+    //arr[1] 의 값이 arr[1][0] 의 주소값과 같습니다.
+    //이것을 통해 알 수 있는 사실은 기존의 1 차원 배열과 마찬가지로
+    //sizeof 나 주소값 연산자와 사용되지 않을 경우, 
+    //arr[0] 은 arr[0][0] 을 가리키는 포인터로 암묵적으로 타입 변환되고, 
+    //arr[1] 은 arr[1][0] 을 가리키는 포인터로 타입 변환된다라는 뜻이 됩니다.
+    
       </div>
     </div>
   </body>
