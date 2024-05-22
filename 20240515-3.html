@@ -102,21 +102,21 @@
     //포인터 선언할때
     //포인터는 주소를 가르킴
     //해당 주소에 값이 접근하는 용도
-    // &
-    //&a a의 주소를 의미
+    // &amp;
+    //&amp;a a의 주소를 의미
   
     //a와b의 값의 위치를 서로 스왑하고 싶다
     int a = 12;
     int b = 24;
   
-    swap(&a, &b);
+    swap(&amp;a, &amp;b);
     printf("%d\n%d\n",a, b);
   
     int* ptr;
     int* ptr2;
   
-    ptr = &a;
-    ptr2 = &b;
+    ptr = &amp;a;
+    ptr2 = &amp;b;
   
   
     return 0;
@@ -127,7 +127,7 @@
   
     char* ptr;
   
-    ptr = &arr[0];
+    ptr = &amp;arr[0];
   
     //arr <-- 주소를 가지고 있음.
     //arr[0] <-- 값을 가지고 있음
@@ -161,14 +161,14 @@ int main() {
 	int* pa;
 	int** ppa;
 
-	pa = &a;
-	ppa = &pa;
+	pa = &amp;a;
+	ppa = &amp;pa;
 
 	a = 3;
 
 	printf("a : %d // *pa : %d // **ppa : %d \n", a, *pa, **ppa);
-	printf("&a : %p // pa : %p // *ppa : %p \n", &a, pa, *ppa);
-	printf("&pa : %p // ppa : %p \n", &pa, ppa);
+	printf("&amp;a : %p // pa : %p // *ppa : %p \n", &amp;a, pa, *ppa);
+	printf("&amp;pa : %p // ppa : %p \n", &amp;amp;pa, ppa);
 
 	return 0;
 }
@@ -176,8 +176,8 @@ int main() {
 
   int main() {
     int arr[3] = { 1, 2, 3 };
-    int(*parr)[3] = &arr;
-  // int (*parr)[3] = &arr;이거는 int(*parr)[3]은 인트적 배열 주소값 3개를 만든거고
+    int(*parr)[3] = &amp;arr;
+  // int (*parr)[3] = &amp;arr;이거는 int(*parr)[3]은 인트적 배열 주소값 3개를 만든거고
   //&arr의 주소값을 쓴다 이거네 ?
   //(*parr)은 arr 배열 자체를 의미하며,
   //(*parr)[i]는 arr 배열의 i번째 요소를 의미
@@ -190,10 +190,10 @@ int main() {
       int arr[2][3];
     
       printf("arr[0] : %p \n", arr[0]);
-      printf("&arr[0][0] : %p \n", &arr[0][0]);
+      printf("&amp;arr[0][0] : %p \n", &amp;arr[0][0]);
     
       printf("arr[1] : %p \n", arr[1]);
-      printf("&arr[1][0] : %p \n", &arr[1][0]);
+      printf("&amp;arr[1][0] : %p \n", &amp;arr[1][0]);
     
       return 0;
     }
@@ -203,7 +203,8 @@ int main() {
     //sizeof 나 주소값 연산자와 사용되지 않을 경우, 
     //arr[0] 은 arr[0][0] 을 가리키는 포인터로 암묵적으로 타입 변환되고, 
     //arr[1] 은 arr[1][0] 을 가리키는 포인터로 타입 변환된다라는 뜻이 됩니다.
-    
+  </pre
+        >
       </div>
     </div>
   </body>

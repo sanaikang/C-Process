@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240522-1</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: green;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+      input {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <h1><a href="index.html">MAIN</a></h1>
+  <input
+    id="Night_Day"
+    type="button"
+    value="Night"
+    onclick="
+    if(document.querySelector('#Night_Day').value==='Night'){
+    document.querySelector('body').style.backgroundColor='black';
+    document.querySelector('body').style.color='white';
+    document.querySelector('#Night_Day').value='Day';} 
+    else{
+    document.querySelector('body').style.backgroundColor='white';
+    document.querySelector('body').style.color='black';
+    document.querySelector('#Night_Day').value='Night'; }"
+  />
+  <body>
+    <div id="grid">
+      <h3>24 05 22-1<br />C-13-1</h3>
+      <div>
+        <pre id="article">
+          문제 1
+이 강좌 최상단에서 이야기 했던 마술 상자를 함수로 제작해보세요 (난이도 : 못한다면 강좌를 다시 읽어보아야 할 것입니다)
+
+#include &lt;stdio.h&gt;
+
+  int box(int a) {
+     a+=4;
+    return a;
+  }
+  int main() {
+    int in;
+    scanf_s("%d", &amp;in);
+    printf("값:%d", box(in));
+    return 0;
+  }
+
+문제 2
+어느날 귀족이 돈벌이가 시원치 않아져서 이전에는 일정하게 10000 달러씩 챙겼지만 이제 일정치 않은 수입을 얻게 되었습니다. 여러분은 slave 함수를 인자를 2 개를 가져서, 하나는 현재 귀족의 재산, 다른 하나는 오늘 귀족의 수입을 인자로 전달받는 새로운 함수를 만들어 보세요 (난이도 : 下)
+
+#include &lt;stdio.h&gt;
+
+  // slave 함수 선언
+  int slave(int current_wealth, int today_income);
+  
+  // slave 함수 정의
+  int slave(int current_wealth, int today_income) {
+      return current_wealth + today_income;
+  }
+  
+  int main() {
+      // 변수 선언
+      int current_wealth;  // 현재 재산
+      int today_income;    // 오늘의 수입
+  
+      // 사용자로부터 입력 받기
+      printf("현재 재산을 입력하세요: ");
+      scanf_s("%d", &amp;current_wealth);  // 현재 재산 입력
+  
+      printf("오늘의 수입을 입력하세요: ");
+      scanf_s("%d", &amp;today_income);    // 오늘의 수입 입력
+  
+      // slave 함수를 호출하여 새로운 재산 계산
+      int new_wealth = slave(current_wealth, today_income);
+  
+      // 결과 출력
+      printf("새로운 재산: %d\n", new_wealth);
+  
+      return 0;
+  }
+  
+  
+
+문제 3
+1 부터 n 까지의 합을 구하는 함수를 작성해보세요. 수학적인 공식을 써도 되지만 for 문으로 작성하는 것이 연습 하는데에는 도움이 될듯 합니다. (난이도 : 下 1 부터 n 까지의 합을 구하는 함수를 작성해보세요. 수학적인 공식을 써도 되지만 for 문으로 작성하는 것이 연습 하는데에는 도움이 될듯 합니다. (난이도 : 下)
+
+#include &lt;stdio.h&gt;
+
+  // 1부터 n까지의 합을 구하는 함수 선언
+  int sum_of_integers(int n);
+  
+  int main() {
+      int n;
+  
+      // 사용자로부터 입력 받기
+      printf("n 값을 입력하세요: ");
+      scanf("%d", &amp;n);
+  
+      // sum_of_integers 함수를 호출하여 1부터 n까지의 합 계산
+      int sum = sum_of_integers(n);
+  
+      // 결과 출력
+      printf("1부터 %d까지의 합: %d\n", n, sum);
+  
+      return 0;
+  }
+  
+  // 1부터 n까지의 합을 구하는 함수 정의
+  int sum_of_integers(int n) {
+      int sum = 0;  // 합을 저장할 변수
+      for (int i = 1; i <= n; i++) {
+          sum += i;  // i를 sum에 더함
+      }
+      return sum;  // 합을 반환
+  }
+  
+
+문제 4
+N 값을 입력 받아서 1 부터 N 까지의 소수의 개수를 출력하는 함수를 제작해보세요. (난이도 : 下)
+
+#include &lt;stdio.h&gt;
+
+  // 소수 여부를 판별하는 함수 선언
+  int is_prime(int num);
+  
+  // 1부터 N까지의 소수 개수를 세는 함수 선언
+  int count_primes(int n);
+  
+  // 소수 여부를 판별하는 함수 정의
+  int is_prime(int num) {
+      if (num <= 1) {
+          return 0; // 1 이하의 수는 소수가 아님
+      }
+      for (int i = 2; i * i <= num; i++) {
+          if (num % i == 0) {
+              return 0; // num이 i로 나누어지면 소수가 아님
+          }
+      }
+      return 1; // num이 소수임
+  }
+  
+  // 1부터 N까지의 소수 개수를 세는 함수 정의
+  int count_primes(int n) {
+      int count = 0;
+      for (int i = 1; i <= n; i++) {
+          if (is_prime(i)) {
+              count++;
+          }
+      }
+      return count;
+  }
+  
+  int main() {
+      int n;
+  
+      // 사용자로부터 입력 받기
+      printf("N 값을 입력하세요: ");
+      scanf_s("%d", &amp;n);
+  
+      // 1부터 N까지의 소수 개수 계산
+      int prime_count = count_primes(n);
+  
+      // 결과 출력
+      printf("1부터 %d까지의 소수 개수: %d\n", n, prime_count);
+  
+      return 0;
+  }
+  
+
+문제 5
+특정한 수 N 을 입력받아서 N 을 소인수분해한 결과가 출력되게 해보세요 (난이도 : 中)
+예) factorize(10); 출력결과 : 2 × 5
+    factorize(180); 출력결과 : 2 × 2 × 3 × 3 × 5
+
+
+#include &lt;stdio.h&gt;
+
+  // 소인수분해 함수 선언
+  void prime_factorization(int n);
+  
+  // 소인수분해 함수 정의
+  void prime_factorization(int n) {
+      // 소인수 2부터 시작하여 n이 1이 될 때까지 반복
+      for (int i = 2; i <= n; i++) {
+          while (n % i == 0) {
+              printf("%d ", i); // 소인수 출력
+              n /= i; // n을 i로 나누어 줄임
+          }
+      }
+  }
+  
+  int main() {
+      int n;
+  
+      // 사용자로부터 수 입력 받기
+      printf("정수 N을 입력하세요: ");
+      scanf_s("%d", &amp;n);
+  
+      // 소인수분해 결과 출력
+      printf("%d의 소인수분해 결과: ", n);
+      prime_factorization(n);
+  
+      return 0;
+  }
+
+
+문제 6
+int function(int *arg) 와 같은 함수가 무엇을 뜻하는지 생각해보세요
+
+int *arg는 arg라는 포인터 변수를 선언하는 것을 의미한다. 함수 내에서 arg를 사용하여 해당 포인터가 가리키는 메모리 위치에 저장된 값을 읽거나 수정할 수 있다.
+
+따라서 int function(int *arg) 함수는 정수형 포인터를 인자로 받아들이고, 그 값에 대한 연산 또는 처리를 수행한 후 정수형 값을 반환하는 역할을 수행한다
+</pre
+        >
+      </div>
+    </div>
+  </body>
+</html>
