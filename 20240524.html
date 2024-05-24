@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240524</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: purple;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+      input {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <h1><a href="/index.html">MAIN</a></h1>
+  <input
+    id="Night_Day"
+    type="button"
+    value="Night"
+    onclick="
+    if(document.querySelector('#Night_Day').value==='Night'){
+    document.querySelector('body').style.backgroundColor='black';
+    document.querySelector('body').style.color='white';
+    document.querySelector('#Night_Day').value='Day';} 
+    else{
+    document.querySelector('body').style.backgroundColor='white';
+    document.querySelector('body').style.color='black';
+    document.querySelector('#Night_Day').value='Night'; }"
+  />
+  <body>
+    <div id="grid">
+      <h3>24 05 24<br />C-15</h3>
+      <div>
+        <pre id="article">
+            /* 문자열의 시작*/
+            #include &lt;stdio.h&gt;
+            int main() {
+                char sentence_1[4] = { 'P', 's', 'i', '\0' };
+                char sentence_2[4] = { 'P', 's', 'i', 0 };
+                char sentence_3[4] = { 'P', 's', 'i', (char)NULL };
+                char sentence_4[4] = { "Psi" };
+            
+                printf("sentence_1 : %s \n", sentence_1);  // %s 를 통해서 문자열을 출력한다.
+                printf("sentence_2 : %s \n", sentence_2);
+                printf("sentence_3 : %s \n", sentence_3);
+                printf("sentence_4 : %s \n", sentence_4);
+            
+                return 0;
+            }
+
+            /* 문자열 바꾸기 */
+            #include &lt;stdio.h&gt;
+            int main() {
+                char word[] = { "long sentence" };
+            
+                printf("조작 이전 : %s \n", word);
+            
+                word[0] = 'a';
+                word[1] = 'b';
+                word[2] = 'c';
+                word[3] = 'd';
+            
+                printf("조작 이후 : %s \n", word);
+            
+                return 0;
+            }
+
+            /* getchar 함수 이용 */
+            #include &lt;stdio.h&gt;int main() {
+            int num;
+                char c;
+
+                printf("숫자를 입력하세요 : ");
+                scanf_s("%d", &num);
+
+                getchar();//getchar() 을 scanf 이전에 호출해서 버퍼를 비워주기
+
+                printf("문자를 입력하세요 : ");
+                scanf_s("%c", &c);
+
+                return 0;
+            }
+
+            결론은 "되도록이면 %c 를 사용하지 말자" 입니다.
+            scanf 에서 %c 를 사용하는 것은 정말로 권장하고 싶지 않은 일입니다.
+            만일 정말로 문자 하나만을 입력받는 프로그램을 만드려면 
+            scanf 에서 %s 형태로 문자열을 입력 받은 뒤에 맨 앞의 한 문자만 취하는 식으로 만들면 되겠습니다.
+
+            결론 : 문자 대신 문자열을 입력 받도록 하자!
+
+            프로그래밍 언어에서 리터럴(literal)이란, 소스 코드 상에서 고정된 값을 가지는 것을 일컫습니다.
+            특히, C 언어의 경우 큰 따옴표(") 로 묶인 것들을 문자열 리터럴(string literal) 이라 부릅니다.
+
+            /* copy_str 사용 예제 */
+            #include &lt;stdio.h&gt;
+            int copy_str(char* src, char* dest);
+                int main() {
+                char str1[] = "hello";
+                char str2[] = "hi";
+
+                printf("복사 이전 : %s \n", str1);
+
+                copy_str(str1, str2);
+
+                printf("복사 이후 : %s \n ", str1);
+
+                return 0;
+                }
+                int copy_str(char* dest, char* src) {
+                while (*src) {
+                *dest = *src;
+                src++;
+                dest++;
+                }
+
+                *dest = '\0';
+
+                return 1;
+}
+
+            #include &lt;stdio.h&gt;
+            int stradd(char *dest, char *src);
+            int main() {
+                char str1[100] = "hello my name is ";
+                char str2[] = "Psi";
+    
+                printf("합치기 이전 : %s \n", str1);
+    
+                stradd(str1, str2);
+    
+                printf("합친 이후 : %s \n", str1);
+    
+                return 0;
+                }
+                int stradd(char *dest, char *src) {
+                /* dest 의 끝 부분을 찾는다.*/
+                while (*dest) {
+        dest++;
+                }
+    
+                /*
+                while 문을 지나고 나면 dest 는 dest 문자열의 NULL 문자를 가리키고 있게 된다.
+                이제 src 의 문자열들을 dest 의 NULL 문자 있는 곳 부터 복사해넣는다.
+                */
+                while (*src) {
+                *dest = *src;
+                        src++;
+                        dest++;
+                    }
+    
+                /* 마지막으로 dest 에 NULL 추가 (왜냐하면 src 에서 NULL 이 추가 되지
+                * 않았으므로) */
+                *dest = '\0';
+    
+                return 1;
+                }
+
+                #include &lt;stdio.h&gt;
+                    int compare(char *str1, char *str2);
+                    int main() {
+                    char str[20] = "hello every1";
+                    char str2[20] = "hello everyone";
+                    char str3[20] = "hello every1 hi";
+                    char str4[20] = "hello every1";
+                    
+                    if (compare(str, str2)) {
+                        printf("%s 와 %s 는 같다 \n", str, str2);
+                    } else {
+                        printf("%s 와 %s 는 다르다 \n", str, str2);
+                    }
+                    
+                    if (compare(str, str3)) {
+                        printf("%s 와 %s 는 같다 \n", str, str3);
+                    } else {
+                        printf("%s 와 %s 는 다르다 \n", str, str3);
+                    }
+                    
+                    if (compare(str, str4)) {
+                        printf("%s 와 %s 는 같다 \n", str, str4);
+                    } else {
+                        printf("%s 와 %s 는 다르다 \n", str, str4);
+                    }
+                    
+                    return 0;
+                    }
+                    int compare(char *str1, char *str2) {
+                    while (*str1) {
+                        if (*str1 != *str2) {
+                    return 0;
+                        }
+                    
+                        str1++;
+                        str2++;
+                    }
+                    
+                    if (*str2 == '\0') return 1;
+                    
+                    return 0;
+                    }
+</pre
+        >
+      </div>
+    </div>
+  </body>
+</html>
