@@ -246,6 +246,239 @@
                     
                     return 0;
                     }
+
+
+                    main 함수
+
+
+                    int main() {
+                      int user_choice;        /* 유저가 선택한 메뉴 */
+                      int num_total_book = 0; /* 현재 책의 수 */
+                    
+                      /* 각각 책, 저자, 출판사를 저장할 배열 생성. 책의 최대 개수는 100 권*/
+                      char book_name[100][30], auth_name[100][30], publ_name[100][30];
+                      /* 빌렸는지 상태를 표시 */
+                      int borrowed[100];
+                    
+                      while (1) {
+                        printf("도서 관리 프로그램 \n");
+                        printf("메뉴를 선택하세요 \n");
+                        printf("1. 책을 새로 추가하기 \n");
+                        printf("2. 책을 검색하기 \n");
+                        printf("3. 책을 빌리기 \n");
+                        printf("4. 책을 반납하기 \n");
+                        printf("5. 프로그램 종료 \n");
+                    
+                        printf("당신의 선택은 : ");
+                        scanf("%d", &user_choice);
+                    
+                        if (user_choice == 1) {
+                          /* 책을 새로 추가하는 함수 호출 */
+                          add_book(book_name, auth_name, publ_name, borrowed, &num_total_book);
+                        } else if (user_choice == 2) {
+                          /* 책을 검색하는 함수 호출 */
+                          search_book(book_name, auth_name, publ_name, num_total_book);
+                        } else if (user_choice == 3) {
+                          /* 책을 빌리는 함수 호출 */
+                          borrow_book(borrowed);
+                        } else if (user_choice == 4) {
+                          /* 책을 반납하는 함수 호출 */
+                          return_book(borrowed);
+                        } else if (user_choice == 5) {
+                          /* 프로그램을 종료한다. */ 
+                          break;
+                        }
+                      }
+                    
+                      return 0;
+                    }
+                    변수 선언:
+                    
+                    user_choice: 사용자가 선택한 메뉴를 저장하는 변수입니다.
+                    num_total_book: 현재까지 추가된 책의 수를 저장하는 변수입니다. 초기값은 0입니다.
+                    배열 선언:
+                    
+                    book_name, auth_name, publ_name: 책의 제목, 저자, 출판사를 각각 저장할 배열입니다. 각 배열은 100개의 문자열을 저장할 수 있으며, 각 문자열의 길이는 30입니다.
+                    borrowed: 책의 대출 상태를 저장하는 배열입니다. 대출되지 않음은 0, 대출됨은 1로 표시됩니다.
+                    메뉴 표시 및 입력 받기:
+                    
+                    무한 루프를 사용하여 사용자에게 메뉴를 반복적으로 표시하고 선택을 받습니다.
+                    scanf 함수로 사용자가 입력한 메뉴 번호를 user_choice 변수에 저장합니다.
+                    사용자 선택에 따른 함수 호출:
+                    
+                    사용자가 선택한 메뉴에 따라 적절한 함수를 호출합니다.
+                    1번: add_book 함수를 호출하여 책을 추가합니다.
+                    2번: search_book 함수를 호출하여 책을 검색합니다.
+                    3번: borrow_book 함수를 호출하여 책을 대출합니다.
+                    4번: return_book 함수를 호출하여 책을 반납합니다.
+                    5번: 프로그램을 종료합니다.
+
+                    add_book 함수
+                    
+                    int add_book(char (*book_name)[30], char (*auth_name)[30],
+                                 char (*publ_name)[30], int *borrowed, int *num_total_book) {
+                      printf("추가할 책의 제목 : ");
+                      scanf("%s", book_name[*num_total_book]);
+                    
+                      printf("추가할 책의 저자 : ");
+                      scanf("%s", auth_name[*num_total_book]);
+                    
+                      printf("추가할 책의 출판사 : ");
+                      scanf("%s", publ_name[*num_total_book]);
+                    
+                      borrowed[*num_total_book] = 0; /* 빌려지지 않음*/
+                      printf("추가 완료! \n");
+                      (*num_total_book)++;
+                    
+                      return 0;
+                    }
+                    책 정보 입력 받기:
+                    
+                    book_name, auth_name, publ_name 배열에 각각 책 제목, 저자, 출판사를 저장합니다.
+                    scanf 함수를 사용하여 사용자가 입력한 정보를 배열에 저장합니다.
+                    대출 상태 초기화:
+                    
+                    새로 추가된 책의 대출 상태를 0(대출되지 않음)으로 설정합니다.
+                    책 수 증가:
+                    
+                    num_total_book 변수를 1 증가시켜 총 책의 수를 갱신합니다.
+
+                    search_book 함수
+                    
+                    int search_book(char (*book_name)[30], char (*auth_name)[30],
+                                    char (*publ_name)[30], int num_total_book) {
+                      int user_input; /* 사용자의 입력을 받는다. */
+                      int i;
+                      char user_search[30];
+                    
+                      printf("어느 것으로 검색 할 것인가요? \n");
+                      printf("1. 책 제목 검색 \n");
+                      printf("2. 지은이 검색 \n");
+                      printf("3. 출판사 검색 \n");
+                      scanf("%d", &user_input);
+                    
+                      printf("검색할 단어를 입력해주세요 : ");
+                      scanf("%s", user_search);
+                    
+                      printf("검색 결과 \n");
+                    
+                      if (user_input == 1) {
+                        for (i = 0; i < num_total_book; i++) {
+                          if (compare(book_name[i], user_search)) {
+                            printf("번호 : %d // 책 이름 : %s // 지은이 : %s // 출판사 : %s \n", i,
+                            book_name[i], auth_name[i], publ_name[i]);
+                          }
+                        }
+                    
+                      } else if (user_input == 2) {
+                        for (i = 0; i < num_total_book; i++) {
+                          if (compare(auth_name[i], user_search)) {
+                            printf("번호 : %d // 책 이름 : %s // 지은이 : %s // 출판사 : %s \n", i,
+                            book_name[i], auth_name[i], publ_name[i]);
+                          }
+                        }
+                    
+                      } else if (user_input == 3) {
+                        for (i = 0; i < num_total_book; i++) {
+                          if (compare(publ_name[i], user_search)) {
+                            printf("번호 : %d // 책 이름 : %s // 지은이 : %s // 출판사 : %s \n", i,
+                            book_name[i], auth_name[i], publ_name[i]);
+                          }
+                        }
+                      }
+                    
+                      return 0;
+                    }
+                    검색 기준 선택:
+                    
+                    사용자에게 어떤 기준으로 검색할 것인지 묻고, user_input 변수에 저장합니다.
+                    1번: 책 제목으로 검색.
+                    2번: 저자로 검색.
+                    3번: 출판사로 검색.
+                    검색어 입력 받기:
+                    
+                    user_search 배열에 사용자가 입력한 검색어를 저장합니다.
+                    검색 및 출력:
+                    
+                    for 루프를 사용하여 모든 책을 순회하며, compare 함수를 사용하여 검색어와 일치하는지 확인합니다.
+                    일치하는 책이 있으면 해당 책의 정보를 출력합니다.
+                    compare 함수
+                    c
+                    코드 복사
+                    int compare(char *str1, char *str2) {
+                      while (*str1) {
+                        if (*str1 != *str2) {
+                          return 0;
+                        }
+                    
+                        str1++;
+                        str2++;
+                      }
+                    
+                      if (*str2 == '\0') return 1;
+                    
+                      return 0;
+                    }
+                    문자열 비교:
+                    두 문자열(str1과 str2)이 동일한지 비교합니다.
+                    문자열이 하나라도 다르면 0을 반환하고, 모두 같으면 1을 반환합니다.
+                    borrow_book 함수
+                    c
+                    코드 복사
+                    int borrow_book(int *borrowed) {
+                      /* 사용자로 부터 책번호를 받을 변수*/
+                      int book_num;
+                    
+                      printf("빌릴 책의 번호를 말해주세요 \n");
+                      printf("책 번호 : ");
+                      scanf("%d", &book_num);
+                    
+                      if (borrowed[book_num] == 1) {
+                        printf("이미 대출된 책입니다! \n");
+                      } else {
+                        printf("책이 성공적으로 대출되었습니다. \n");
+                        borrowed[book_num] = 1;
+                      }
+                    
+                      return 0;
+                    }
+                    책 번호 입력 받기:
+                    
+                    사용자가 대출할 책의 번호를 입력합니다.
+                    대출 상태 확인 및 갱신:
+                    
+                    해당 책이 이미 대출된 상태인지 확인합니다.
+                    대출 가능하면 대출 상태를 1로 갱신하고, 메시지를 출력합니다.
+                    이미 대출된 책이면 오류 메시지를 출력합니다.
+                    return_book 함수
+                    c
+                    코드 복사
+                    int return_book(int *borrowed) {
+                      /* 반납할 책의 번호 */
+                      int num_book;
+                    
+                      printf("반납할 책의 번호를 써주세요 \n");
+                      printf("책 번호 : ");
+                      scanf("%d", &num_book);
+                    
+                      if (borrowed[num_book] == 0) {
+                        printf("이미 반납되어 있는 상태입니다\n");
+                      } else {
+                        borrowed[num_book] = 0;
+                        printf("성공적으로 반납되었습니다\n");
+                      }
+                    
+                      return 0;
+                    }
+                    책 번호 입력 받기:
+                    
+                    사용자가 반납할 책의 번호를 입력합니다.
+                    반납 상태 확인 및 갱신:
+                    
+                    해당 책이 이미 반납된 상태인지 확인합니다.
+                    반납 가능하면 대출 상태를 0으로 갱신하고, 메시지를 출력합니다.
+                    이미 반납된 책이면 오류 메시지를 출력합니다.
+                    이 프로그램은 사용자가 도서 관리 작업을 수행할 수 있도록 다양한 기능을 제공합니다. 각 함수는 특정 작업을 수행하며, main 함수는 사용자의 입력에 따라 적절한 함수를 호출합니다.
 </pre
         >
       </div>

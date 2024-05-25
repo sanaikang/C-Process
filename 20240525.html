@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>20240525</title>
+    <meta charset="utf-8" />
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 70px;
+        border-bottom: 1px gray solid;
+      }
+      h3 {
+        /*margin-left: 65%;
+            font-size: 30px;*/
+        text-decoration: underline;
+      }
+      a {
+        color: red;
+        text-decoration: none;
+      }
+      pre {
+        font-size: 120%;
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 30px;
+      }
+      body {
+        margin: 0;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      #grid h3 {
+        padding-left: 20px;
+        margin-top: 0px;
+      }
+      #article {
+        margin: 10px;
+        margin-top: 35px;
+      }
+      @media (max-width: 950px) {
+        h3 {
+          display: none; /*디스플레이크기가 950px밑이면 h3 display: none*/
+        }
+      }
+      @media (min-width: 1300px) {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 1600px) {
+        h3 {
+          font-size: 35px;
+        }
+      }
+      input {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <h1><a href="/index.html">MAIN</a></h1>
+  <input
+    id="Night_Day"
+    type="button"
+    value="Night"
+    onclick="
+    if(document.querySelector('#Night_Day').value==='Night'){
+    document.querySelector('body').style.backgroundColor='black';
+    document.querySelector('body').style.color='white';
+    document.querySelector('#Night_Day').value='Day';} 
+    else{
+    document.querySelector('body').style.backgroundColor='white';
+    document.querySelector('body').style.color='black';
+    document.querySelector('#Night_Day').value='Night'; }"
+  />
+  <body>
+    <div id="grid">
+      <h3>24 05 25<br />C-16</h3>
+      <div>
+        <pre id="article">
+            /* 구조체의 도입*/
+            #include &lt;stdio.h&gt;
+            struct Human {
+              int age;    /* 나이 */
+              int height; /* 키 */
+              int weight; /* 몸무게 */
+            };            /* ; 붙이는 것 주의하세요 */
+            int main() {
+            struct Human Psi;
+            
+            Psi.age = 99;
+            Psi.height = 185;
+            Psi.weight = 80;
+            
+            printf("Psi 에 대한 정보 \n");
+            printf("나이   : %d \n", Psi.age);
+            printf("키     : %d \n", Psi.height);
+            printf("몸무게 : %d \n", Psi.weight);
+            return 0;
+            }
+
+             /* 구조체 예제 2 */
+            #include &lt;stdio.h&gt;
+             char copy_str(char *dest, const char *src);
+            struct Books {
+              /* 책 이름 */
+            char name[30];
+              /* 저자 이름 */
+            char auth[30];
+              /* 출판사 이름 */
+            char publ[30];
+              /* 빌려 졌나요? */
+            int borrowed;
+            };
+            int main() {
+            struct Books Harry_Potter;
+            
+            copy_str(Harry_Potter.name, "Harry Potter");
+            copy_str(Harry_Potter.auth, "J.K. Rolling");
+            copy_str(Harry_Potter.publ, "Scholastic");
+            Harry_Potter.borrowed = 0;
+            
+            printf("책 이름 : %s \n", Harry_Potter.name);
+            printf("저자 이름 : %s \n", Harry_Potter.auth);
+            printf("출판사 이름 : %s \n", Harry_Potter.publ);
+            
+            return 0;
+            }
+            char copy_str(char *dest, const char *src) {
+            while (*src) {
+                *dest = *src;
+                src++;
+                dest++;
+                }
+        
+              *dest = '\0';
+        
+            return 1;
+            }
+
+            /* 구조체 포인터 */
+            #include &lt;stdio.h&gt;
+            struct test {
+            int a, b;
+            int main() {
+            };
+            struct test st;
+            struct test *ptr;
+            ptr = &amp;st;
+            ptr->a = 1; //(*ptr).a = 1
+            ptr->b = 2; //(*ptr).a = 2
+            printf("st 의 a 멤버 : %d \n", st.a);
+            printf("st 의 b 멤버 : %d \n", st.b);
+            return 0;
+            }
+
+
+            #include &lt;stdio.h&gt;
+            char copy_str(char *dest, char *src);
+            struct TEST {
+            int i;
+            char str[20];
+            };
+            int main() {
+            struct TEST a, b;
+                
+            b.i = 3;
+            copy_str(b.str, "hello, world");
+                
+            a = b;
+                
+            printf("a.str : %s \n", a.str);
+            printf("a.i : %d \n", a.i);
+                
+            return 0;
+            }
+            char copy_str(char *dest, char *src) {
+            while (*src) {
+            *dest = *src;
+            src++;
+            dest++;
+            }
+                
+            *dest = '\0';
+                
+            return 1;
+            }
+
+
+            /* 인자로 제대로 전달하기 */
+            #include &lt;stdio.h&gt;
+            struct TEST {
+            int age;
+            int gender;
+            };
+            int set_human(struct TEST *a, int age, int gender);
+            int main() {
+            struct TEST human;
+            
+            set_human(&human, 10, 1);
+            
+              printf("AGE : %d // Gender : %d ", human.age, human.gender);
+            return 0;
+            }
+            int set_human(struct TEST *a, int age, int gender) {
+            a->age = age;
+            a->gender = gender;
+            
+            return 0;
+            }
+
+            /* 구조체 안의 구조체*/
+            #include &lt;stdio.h&gt;
+            struct employee {
+            int age;
+            int salary;
+            };
+            struct company {
+            struct employee data;
+            char name[10];
+            };
+            int main() {
+            struct company Kim;
+            
+            Kim.data.age = 31;
+            Kim.data.salary = 3000000;
+            
+            printf("Kim's age : %d \n", Kim.data.age);
+            printf("Kim's salary : %d$/year \n", Kim.data.salary);
+            
+            return 0;
+            }
+            /* 구조체를 리턴하는 함수 */
+            #include &lt;stdio.h&gt;
+            struct AA function(int j);
+            struct AA {
+            int i;
+            };
+
+            int main() {
+            struct AA a;
+            
+            a = function(10);
+            printf("a.i : %d \n", a.i);
+            
+            return 0;
+            }
+
+            struct AA function(int j) {
+            struct AA A;
+            A.i = j;
+            
+            return A;
+            }
+
+
+            <strong>//엔디안 개념 기억하기//</strong>
+
+            /* 열거형의 도입 */
+            #include &lt;stdio.h&gt;
+            enum { RED, BLUE, WHITE, BLACK };
+            int main() {
+            int palette = RED;
+            switch (palette) {
+            case RED:
+            printf("palette : RED \n");
+            break;
+            case BLUE:
+            printf("palette : BLUE \n");
+            break;
+            
+            case WHITE:
+            printf("palette : WHITE \n");
+            break;
+            case BLACK:
+            printf("palette : BLACK \n");
+            break;
+            }
+            }
+</pre>
+      </div>
+    </div>
+  </body>
+</html>
